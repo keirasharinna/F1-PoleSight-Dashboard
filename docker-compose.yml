@@ -1,0 +1,181 @@
+version: '3.8'
+
+# --- DEFINISI BERSAMA UNTUK AIRFLOW ---
+x-airflow-common: &airflow-common
+  build:
+    context: .
+    dockerfile: docker/airflow/Dockerfile
+  environment:
+    &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-metadata/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./jobs:/opt/airflow/jobs
+    - ./logs:/opt/airflow/logs
+    - ./plugins:/opt/airflow/plugins
+    - ./requirements.txt:/requirements.txt
+    - ./data:/opt/airflow/data
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    &airflow-common-depends-on
+    postgres-metadata:
+      condition: service_healthy
+
+services:
+  # 1. DATA WAREHOUSE (PostgreSQL)
+  postgres-warehouse:
+    image: postgres:15
+    container_name: f1_warehouse
+    environment:
+      POSTGRES_USER: warehouse_user
+      POSTGRES_PASSWORD: warehouse_password
+      POSTGRES_DB: f1_datawarehouse
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_warehouse_data:/var/lib/postgresql/data
+    networks:
+      - polesight-net
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "warehouse_user"]
+      interval: 10s
+      retries: 5
+
+  # 2. DATA LAKE (MongoDB)
+  mongo:
+    image: mongo:6.0
+    container_name: f1_datalake
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - polesight-net
+
+  mongo-express:
+    image: mongo-express
+    container_name: f1_mongo_ui
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://admin:password@mongo:27017/
+    networks:
+      - polesight-net
+
+  # 3. SPARK CLUSTER (VERSI APACHE OFFICIAL)
+  spark-master:
+    image: apache/spark:3.5.0
+    container_name: f1_spark_master
+    # Command khusus untuk Apache Image
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    ports:
+      - "9090:8080" # Web UI Master
+      - "7077:7077" # Port Komunikasi Master
+    networks:
+      - polesight-net
+    volumes:
+      - ./jobs:/opt/spark/work-dir/jobs
+      - ./data:/opt/spark/work-dir/data
+
+  spark-worker:
+    image: apache/spark:3.5.0
+    container_name: f1_spark_worker
+    # Command khusus untuk connect ke Master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    networks:
+      - polesight-net
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+    volumes:
+      - ./jobs:/opt/spark/work-dir/jobs
+      - ./data:/opt/spark/work-dir/data
+
+  # 4. Airflow
+  postgres-metadata:
+    image: postgres:13
+    container_name: airflow_metadata
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_airflow_data:/var/lib/postgresql/data
+    networks:
+      - polesight-net
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    container_name: f1_airflow_webserver
+    ports:
+      - "8090:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    networks:
+      - polesight-net
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    container_name: f1_airflow_scheduler
+    restart: always
+    networks:
+      - polesight-net
+
+  airflow-init:
+    <<: *airflow-common
+    command: version
+    container_name: f1_airflow_init
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-admin}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-admin}
+    networks:
+      - polesight-net
+
+  # 5. PROTOTYPING (Jupyter)
+  jupyter:
+    image: jupyter/pyspark-notebook:latest
+    container_name: f1_jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=f1polesight
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/data
+    networks:
+      - polesight-net
+
+volumes:
+  postgres_warehouse_data:
+  postgres_airflow_data:
+  mongo_data:
+
+networks:
+  polesight-net:
+    driver: bridge

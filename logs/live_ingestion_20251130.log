@@ -1,0 +1,87 @@
+2025-11-30 15:39:39,831 - INFO - STARTING LIVE INGESTION CHECK FOR 2025
+2025-11-30 15:39:39,877 - INFO - Connected to MongoDB: f1_datalake.telemetry_raw
+2025-11-30 15:39:40,107 - INFO - Existing rounds in DB: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-11-30 15:39:40,109 - INFO - Fetching F1 schedule for 2025
+2025-11-30 15:39:40,216 - WARNING - DEFAULT CACHE ENABLED! (24.0 KB) /home/airflow/.cache/fastf1
+2025-11-30 15:39:41,982 - INFO - Found 22 completed races
+2025-11-30 15:39:41,993 - INFO - Found 1 NEW races to download:
+2025-11-30 15:39:41,994 - INFO -    - Round 22: Las Vegas Grand Prix
+2025-11-30 15:39:41,998 - INFO - 
+======================================================================
+2025-11-30 15:39:42,000 - INFO - DOWNLOADING: Round 22 - Las Vegas Grand Prix
+2025-11-30 15:39:42,001 - INFO - ======================================================================
+2025-11-30 15:39:42,124 - INFO -    Loading telemetry & weather data...
+2025-11-30 15:39:42,125 - INFO - Loading data for Las Vegas Grand Prix - Qualifying [v3.6.1]
+2025-11-30 15:39:42,131 - INFO - No cached data found for session_info. Loading data...
+2025-11-30 15:39:42,132 - INFO - Fetching session info data...
+2025-11-30 15:39:43,020 - INFO - Data has been written to cache!
+2025-11-30 15:39:43,022 - INFO - No cached data found for driver_info. Loading data...
+2025-11-30 15:39:43,022 - INFO - Fetching driver list...
+2025-11-30 15:39:44,014 - INFO - Data has been written to cache!
+2025-11-30 15:39:46,903 - INFO - No cached data found for session_status_data. Loading data...
+2025-11-30 15:39:46,906 - INFO - Fetching session status data...
+2025-11-30 15:39:47,723 - INFO - Data has been written to cache!
+2025-11-30 15:39:47,726 - INFO - No cached data found for track_status_data. Loading data...
+2025-11-30 15:39:47,727 - INFO - Fetching track status data...
+2025-11-30 15:39:48,579 - INFO - Data has been written to cache!
+2025-11-30 15:39:48,587 - INFO - No cached data found for _extended_timing_data. Loading data...
+2025-11-30 15:39:48,588 - INFO - Fetching timing data...
+2025-11-30 15:39:51,193 - INFO - Parsing timing data...
+2025-11-30 15:39:53,112 - INFO - Data has been written to cache!
+2025-11-30 15:39:53,113 - INFO - No cached data found for timing_app_data. Loading data...
+2025-11-30 15:39:53,114 - INFO - Fetching timing app data...
+2025-11-30 15:39:54,352 - INFO - Data has been written to cache!
+2025-11-30 15:39:54,353 - INFO - Processing timing data...
+2025-11-30 15:39:57,072 - INFO - No cached data found for car_data. Loading data...
+2025-11-30 15:39:57,072 - INFO - Fetching car data...
+2025-11-30 15:39:59,284 - INFO - Parsing car data...
+2025-11-30 15:40:13,646 - INFO - Data has been written to cache!
+2025-11-30 15:40:13,648 - INFO - No cached data found for position_data. Loading data...
+2025-11-30 15:40:13,648 - INFO - Fetching position data...
+2025-11-30 15:40:16,807 - INFO - Parsing position data...
+2025-11-30 15:40:28,790 - INFO - Data has been written to cache!
+2025-11-30 15:40:32,173 - INFO - No cached data found for weather_data. Loading data...
+2025-11-30 15:40:32,174 - INFO - Fetching weather data...
+2025-11-30 15:40:33,125 - INFO - Data has been written to cache!
+2025-11-30 15:40:33,212 - INFO - Finished loading data for 20 drivers: ['4', '1', '55', '63', '81', '30', '14', '6', '16', '10', '27', '18', '31', '87', '43', '23', '12', '5', '22', '44']
+2025-11-30 15:40:33,213 - INFO -    Raw laps: 375
+2025-11-30 15:40:33,217 - INFO -      Dry laps: 0
+2025-11-30 15:40:33,218 - INFO -     Valid laps: 0
+2025-11-30 15:40:33,218 - WARNING -    No valid laps found for Las Vegas Grand Prix
+2025-11-30 15:40:33,219 - INFO -  INGESTION SUMMARY
+2025-11-30 15:40:33,219 - INFO -  New races processed: 1
+2025-11-30 15:40:33,220 - INFO -  Total laps inserted: 0
+2025-11-30 15:40:33,222 - INFO -  Live ingestion completed successfully!
+2025-11-30 17:39:14,404 - INFO - STARTING LIVE INGESTION CHECK FOR 2025
+2025-11-30 17:39:14,432 - INFO - Connected to MongoDB: f1_datalake.telemetry_raw
+2025-11-30 17:39:14,551 - INFO - Existing rounds in DB: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-11-30 17:39:14,552 - INFO - Fetching F1 schedule for 2025
+2025-11-30 17:39:14,567 - WARNING - DEFAULT CACHE ENABLED! (50.21 MB) /home/airflow/.cache/fastf1
+2025-11-30 17:39:15,148 - INFO - Found 22 completed races
+2025-11-30 17:39:15,158 - INFO - Found 1 NEW races to download:
+2025-11-30 17:39:15,160 - INFO -    - Round 22: Las Vegas Grand Prix
+2025-11-30 17:39:15,161 - INFO - 
+======================================================================
+2025-11-30 17:39:15,162 - INFO - DOWNLOADING: Round 22 - Las Vegas Grand Prix
+2025-11-30 17:39:15,163 - INFO - ======================================================================
+2025-11-30 17:39:15,263 - INFO -    Loading telemetry & weather data...
+2025-11-30 17:39:15,264 - INFO - Loading data for Las Vegas Grand Prix - Qualifying [v3.6.1]
+2025-11-30 17:39:15,267 - INFO - Using cached data for session_info
+2025-11-30 17:39:15,269 - INFO - Using cached data for driver_info
+2025-11-30 17:39:16,294 - INFO - Using cached data for session_status_data
+2025-11-30 17:39:16,297 - INFO - Using cached data for track_status_data
+2025-11-30 17:39:16,305 - INFO - Using cached data for _extended_timing_data
+2025-11-30 17:39:16,308 - INFO - Using cached data for timing_app_data
+2025-11-30 17:39:16,309 - INFO - Processing timing data...
+2025-11-30 17:39:23,962 - INFO - Using cached data for car_data
+2025-11-30 17:39:27,282 - INFO - Using cached data for position_data
+2025-11-30 17:39:38,471 - INFO - Using cached data for weather_data
+2025-11-30 17:39:38,838 - INFO - Finished loading data for 20 drivers: ['4', '1', '55', '63', '81', '30', '14', '6', '16', '10', '27', '18', '31', '87', '43', '23', '12', '5', '22', '44']
+2025-11-30 17:39:38,840 - INFO -    Raw laps: 375
+2025-11-30 17:39:38,855 - INFO -      Dry laps: 0
+2025-11-30 17:39:38,857 - INFO -     Valid laps: 0
+2025-11-30 17:39:38,858 - WARNING -    No valid laps found for Las Vegas Grand Prix
+2025-11-30 17:39:38,860 - INFO -  INGESTION SUMMARY
+2025-11-30 17:39:38,861 - INFO -  New races processed: 1
+2025-11-30 17:39:38,861 - INFO -  Total laps inserted: 0
+2025-11-30 17:39:38,865 - INFO -  Live ingestion completed successfully!

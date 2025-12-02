@@ -1,0 +1,76 @@
+[2025-11-28T06:17:20.295+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-28T06:17:20.317+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_polesight_pipeline.run_spark_etl_job manual__2025-11-28T06:17:17.299590+00:00 [queued]>
+[2025-11-28T06:17:20.331+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_polesight_pipeline.run_spark_etl_job manual__2025-11-28T06:17:17.299590+00:00 [queued]>
+[2025-11-28T06:17:20.332+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-11-28T06:17:20.351+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): run_spark_etl_job> on 2025-11-28 06:17:17.299590+00:00
+[2025-11-28T06:17:20.361+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'f1_polesight_pipeline', 'run_spark_etl_job', 'manual__2025-11-28T06:17:17.299590+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline_dag.py', '--cfg-path', '/tmp/tmpxdildn8t']
+[2025-11-28T06:17:20.367+0000] {standard_task_runner.py:105} INFO - Job 23: Subtask run_spark_etl_job
+[2025-11-28T06:17:20.368+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=2607) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T06:17:20.369+0000] {standard_task_runner.py:72} INFO - Started process 2608 to run task
+[2025-11-28T06:17:20.450+0000] {task_command.py:467} INFO - Running <TaskInstance: f1_polesight_pipeline.run_spark_etl_job manual__2025-11-28T06:17:17.299590+00:00 [running]> on host 5f0ca9dcc785
+[2025-11-28T06:17:20.590+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='f1_admin' AIRFLOW_CTX_DAG_ID='f1_polesight_pipeline' AIRFLOW_CTX_TASK_ID='run_spark_etl_job' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T06:17:17.299590+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T06:17:17.299590+00:00'
+[2025-11-28T06:17:20.591+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-28T06:17:20.615+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-11-28T06:17:20.616+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/jobs/etl_process.py']
+[2025-11-28T06:17:20.627+0000] {subprocess.py:86} INFO - Output:
+[2025-11-28T06:17:22.599+0000] {subprocess.py:93} INFO - /home/***/.local/lib/python3.12/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2025-11-28T06:17:27.760+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/home/***/.local/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-11-28T06:17:28.012+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-11-28T06:17:28.014+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-11-28T06:17:28.029+0000] {subprocess.py:93} INFO - org.mongodb.spark#mongo-spark-connector_2.12 added as a dependency
+[2025-11-28T06:17:28.032+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-11-28T06:17:28.035+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-710f1c2c-37a3-4b67-8df8-45bd2b767ff9;1.0
+[2025-11-28T06:17:28.037+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-11-28T06:17:29.780+0000] {subprocess.py:93} INFO - 	found org.mongodb.spark#mongo-spark-connector_2.12;10.4.0 in central
+[2025-11-28T06:17:30.924+0000] {subprocess.py:93} INFO - 	found org.mongodb#mongodb-driver-sync;5.1.4 in central
+[2025-11-28T06:17:30.926+0000] {subprocess.py:93} INFO - 	[5.1.4] org.mongodb#mongodb-driver-sync;[5.1.1,5.1.99)
+[2025-11-28T06:17:31.127+0000] {subprocess.py:93} INFO - 	found org.mongodb#bson;5.1.4 in central
+[2025-11-28T06:17:32.529+0000] {subprocess.py:93} INFO - 	found org.mongodb#mongodb-driver-core;5.1.4 in central
+[2025-11-28T06:17:32.661+0000] {subprocess.py:93} INFO - 	found org.mongodb#bson-record-codec;5.1.4 in central
+[2025-11-28T06:17:32.835+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.6.0 in central
+[2025-11-28T06:17:32.989+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.31.0 in central
+[2025-11-28T06:17:33.107+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.4.0/mongo-spark-connector_2.12-10.4.0.jar ...
+[2025-11-28T06:17:33.268+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.mongodb.spark#mongo-spark-connector_2.12;10.4.0!mongo-spark-connector_2.12.jar (261ms)
+[2025-11-28T06:17:33.322+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar ...
+[2025-11-28T06:17:34.150+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.postgresql#postgresql;42.6.0!postgresql.jar (878ms)
+[2025-11-28T06:17:34.195+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-sync/5.1.4/mongodb-driver-sync-5.1.4.jar ...
+[2025-11-28T06:17:34.362+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.mongodb#mongodb-driver-sync;5.1.4!mongodb-driver-sync.jar (208ms)
+[2025-11-28T06:17:34.407+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/mongodb/bson/5.1.4/bson-5.1.4.jar ...
+[2025-11-28T06:17:34.868+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.mongodb#bson;5.1.4!bson.jar (500ms)
+[2025-11-28T06:17:34.914+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-core/5.1.4/mongodb-driver-core-5.1.4.jar ...
+[2025-11-28T06:17:36.257+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.mongodb#mongodb-driver-core;5.1.4!mongodb-driver-core.jar (1384ms)
+[2025-11-28T06:17:36.301+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/mongodb/bson-record-codec/5.1.4/bson-record-codec-5.1.4.jar ...
+[2025-11-28T06:17:36.354+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.mongodb#bson-record-codec;5.1.4!bson-record-codec.jar (94ms)
+[2025-11-28T06:17:36.396+0000] {subprocess.py:93} INFO - downloading https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.31.0/checker-qual-3.31.0.jar ...
+[2025-11-28T06:17:36.619+0000] {subprocess.py:93} INFO - 	[SUCCESSFUL ] org.checkerframework#checker-qual;3.31.0!checker-qual.jar (260ms)
+[2025-11-28T06:17:36.620+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 4970ms :: artifacts dl 3614ms
+[2025-11-28T06:17:36.621+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-11-28T06:17:36.622+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.31.0 from central in [default]
+[2025-11-28T06:17:36.623+0000] {subprocess.py:93} INFO - 	org.mongodb#bson;5.1.4 from central in [default]
+[2025-11-28T06:17:36.624+0000] {subprocess.py:93} INFO - 	org.mongodb#bson-record-codec;5.1.4 from central in [default]
+[2025-11-28T06:17:36.625+0000] {subprocess.py:93} INFO - 	org.mongodb#mongodb-driver-core;5.1.4 from central in [default]
+[2025-11-28T06:17:36.626+0000] {subprocess.py:93} INFO - 	org.mongodb#mongodb-driver-sync;5.1.4 from central in [default]
+[2025-11-28T06:17:36.627+0000] {subprocess.py:93} INFO - 	org.mongodb.spark#mongo-spark-connector_2.12;10.4.0 from central in [default]
+[2025-11-28T06:17:36.628+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.6.0 from central in [default]
+[2025-11-28T06:17:36.629+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-11-28T06:17:36.630+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-11-28T06:17:36.631+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-11-28T06:17:36.633+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-11-28T06:17:36.634+0000] {subprocess.py:93} INFO - 	|      default     |   7   |   7   |   7   |   0   ||   7   |   7   |
+[2025-11-28T06:17:36.635+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-11-28T06:17:36.636+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-710f1c2c-37a3-4b67-8df8-45bd2b767ff9
+[2025-11-28T06:17:36.637+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-11-28T06:17:36.679+0000] {subprocess.py:93} INFO - 	7 artifacts copied, 0 already retrieved (3797kB/49ms)
+[2025-11-28T06:17:37.201+0000] {subprocess.py:93} INFO - 25/11/28 06:17:37 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-11-28T06:17:37.656+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-11-28T06:17:37.657+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-11-28T06:17:56.754+0000] {subprocess.py:93} INFO - 25/11/28 06:17:56 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[2025-11-28T06:18:32.403+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 1) / 1][Stage 2:>                                                          (0 + 2) / 2]                                                                                Extracting Raw Data
+[2025-11-28T06:18:32.405+0000] {subprocess.py:93} INFO - Melakukan Deep Cleaning & Feature Engineering
+[2025-11-28T06:18:32.407+0000] {subprocess.py:93} INFO - Analisis mendalam tersimpan otomatis.
+[2025-11-28T06:18:32.959+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-11-28T06:18:33.001+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-28T06:18:33.003+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=f1_polesight_pipeline, task_id=run_spark_etl_job, run_id=manual__2025-11-28T06:17:17.299590+00:00, execution_date=20251128T061717, start_date=20251128T061720, end_date=20251128T061833
+[2025-11-28T06:18:33.071+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-28T06:18:33.128+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T06:18:33.133+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,18 @@
+# Abaikan folder sistem
+venv/
+__pycache__/
+.git/
+.DS_Store
+
+# Abaikan data mentah besar
+data/raw/
+fastf1_cache/
+docker/
+
+# Abaikan database docker
+postgres_warehouse_data/
+postgres_airflow_data/
+mongo_data/
+
+# KECUALI file ini
+!dashboard/f1_data_static.csv

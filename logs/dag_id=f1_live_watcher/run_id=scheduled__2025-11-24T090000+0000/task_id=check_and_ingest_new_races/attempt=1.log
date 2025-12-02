@@ -1,0 +1,373 @@
+[2025-12-01T09:40:39.039+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-01T09:40:39.090+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_live_watcher.check_and_ingest_new_races scheduled__2025-11-24T09:00:00+00:00 [queued]>
+[2025-12-01T09:40:39.121+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_live_watcher.check_and_ingest_new_races scheduled__2025-11-24T09:00:00+00:00 [queued]>
+[2025-12-01T09:40:39.122+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-01T09:40:39.178+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): check_and_ingest_new_races> on 2025-11-24 09:00:00+00:00
+[2025-12-01T09:40:39.199+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'f1_live_watcher', 'check_and_ingest_new_races', 'scheduled__2025-11-24T09:00:00+00:00', '--job-id', '53', '--raw', '--subdir', 'DAGS_FOLDER/live_ingestion_dag.py', '--cfg-path', '/tmp/tmpjkai10z5']
+[2025-12-01T09:40:39.214+0000] {standard_task_runner.py:105} INFO - Job 53: Subtask check_and_ingest_new_races
+[2025-12-01T09:40:39.224+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=19501) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-12-01T09:40:39.234+0000] {standard_task_runner.py:72} INFO - Started process 19502 to run task
+[2025-12-01T09:40:39.393+0000] {task_command.py:467} INFO - Running <TaskInstance: f1_live_watcher.check_and_ingest_new_races scheduled__2025-11-24T09:00:00+00:00 [running]> on host 5f0ca9dcc785
+[2025-12-01T09:40:39.902+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='f1_admin' AIRFLOW_CTX_DAG_ID='f1_live_watcher' AIRFLOW_CTX_TASK_ID='check_and_ingest_new_races' AIRFLOW_CTX_EXECUTION_DATE='2025-11-24T09:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-24T09:00:00+00:00'
+[2025-12-01T09:40:39.905+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-01T09:40:39.931+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-01T09:40:39.934+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/jobs/ingest_live.py']
+[2025-12-01T09:40:39.954+0000] {subprocess.py:86} INFO - Output:
+[2025-12-01T09:40:43.725+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:43,724 - INFO - STARTING LIVE INGESTION CHECK FOR 2025
+[2025-12-01T09:40:43.743+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:43,742 - INFO - Connected to MongoDB: f1_datalake.telemetry_raw
+[2025-12-01T09:40:43.817+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:43,817 - INFO - Existing rounds in DB: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+[2025-12-01T09:40:43.818+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:43,817 - INFO - Fetching F1 schedule for 2025
+[2025-12-01T09:40:43.827+0000] {subprocess.py:93} INFO - req         WARNING 	DEFAULT CACHE ENABLED! (50.22 MB) /home/***/.cache/fastf1
+[2025-12-01T09:40:43.828+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:43,826 - WARNING - DEFAULT CACHE ENABLED! (50.22 MB) /home/***/.cache/fastf1
+[2025-12-01T09:40:47.855+0000] {subprocess.py:93} INFO - logger      WARNING 	Failed to load schedule from FastF1 backend!
+[2025-12-01T09:40:47.856+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:47,855 - WARNING - Failed to load schedule from FastF1 backend!
+[2025-12-01T09:40:47.874+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:47,856 - DEBUG - Traceback for failure in FastF1 schedule
+[2025-12-01T09:40:47.875+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:47.876+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 196, in _new_conn
+[2025-12-01T09:40:47.876+0000] {subprocess.py:93} INFO -     sock = connection.create_connection(
+[2025-12-01T09:40:47.877+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.878+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+[2025-12-01T09:40:47.879+0000] {subprocess.py:93} INFO -     for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+[2025-12-01T09:40:47.880+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.881+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/socket.py", line 976, in getaddrinfo
+[2025-12-01T09:40:47.882+0000] {subprocess.py:93} INFO -     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+[2025-12-01T09:40:47.883+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.884+0000] {subprocess.py:93} INFO - socket.gaierror: [Errno -5] No address associated with hostname
+[2025-12-01T09:40:47.885+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:47.886+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-12-01T09:40:47.887+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:47.888+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:47.888+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+[2025-12-01T09:40:47.889+0000] {subprocess.py:93} INFO -     response = self._make_request(
+[2025-12-01T09:40:47.890+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.891+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+[2025-12-01T09:40:47.891+0000] {subprocess.py:93} INFO -     raise new_e
+[2025-12-01T09:40:47.892+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+[2025-12-01T09:40:47.893+0000] {subprocess.py:93} INFO -     self._validate_conn(conn)
+[2025-12-01T09:40:47.894+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+[2025-12-01T09:40:47.894+0000] {subprocess.py:93} INFO -     conn.connect()
+[2025-12-01T09:40:47.895+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 615, in connect
+[2025-12-01T09:40:47.896+0000] {subprocess.py:93} INFO -     self.sock = sock = self._new_conn()
+[2025-12-01T09:40:47.896+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.897+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 203, in _new_conn
+[2025-12-01T09:40:47.898+0000] {subprocess.py:93} INFO -     raise NameResolutionError(self.host, self, e) from e
+[2025-12-01T09:40:47.899+0000] {subprocess.py:93} INFO - urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x71eff87fb1a0>: Failed to resolve 'raw.githubusercontent.com' ([Errno -5] No address associated with hostname)
+[2025-12-01T09:40:47.899+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:47.900+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-12-01T09:40:47.901+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:47.901+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:47.902+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+[2025-12-01T09:40:47.903+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2025-12-01T09:40:47.904+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2025-12-01T09:40:47.905+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+[2025-12-01T09:40:47.905+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2025-12-01T09:40:47.906+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.907+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+[2025-12-01T09:40:47.908+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+[2025-12-01T09:40:47.909+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.909+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='raw.githubusercontent.com', port=443): Max retries exceeded with url: /theOehrly/f1schedule/master/schedule_2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff87fb1a0>: Failed to resolve 'raw.githubusercontent.com' ([Errno -5] No address associated with hostname)"))
+[2025-12-01T09:40:47.910+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:47.911+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-12-01T09:40:47.912+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:47.912+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:47.913+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/logger.py", line 151, in __wrapped
+[2025-12-01T09:40:47.914+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-12-01T09:40:47.914+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.915+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/events.py", line 599, in _get_schedule_ff1
+[2025-12-01T09:40:47.916+0000] {subprocess.py:93} INFO -     response = Cache.requests_get(
+[2025-12-01T09:40:47.916+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.917+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 303, in requests_get
+[2025-12-01T09:40:47.918+0000] {subprocess.py:93} INFO -     return cls._cached_request('GET', url, **kwargs)
+[2025-12-01T09:40:47.919+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.919+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 347, in _cached_request
+[2025-12-01T09:40:47.920+0000] {subprocess.py:93} INFO -     response = func(url, **kwargs)
+[2025-12-01T09:40:47.921+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.921+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 127, in get
+[2025-12-01T09:40:47.922+0000] {subprocess.py:93} INFO -     return self.request('GET', url, params=params, **kwargs)
+[2025-12-01T09:40:47.923+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.924+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 183, in request
+[2025-12-01T09:40:47.925+0000] {subprocess.py:93} INFO -     return super().request(method, url, *args, headers=headers, **kwargs)  # type: ignore
+[2025-12-01T09:40:47.925+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.926+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+[2025-12-01T09:40:47.927+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2025-12-01T09:40:47.927+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.928+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 230, in send
+[2025-12-01T09:40:47.929+0000] {subprocess.py:93} INFO -     response = self._send_and_cache(request, actions, cached_response, **kwargs)
+[2025-12-01T09:40:47.930+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.930+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 254, in _send_and_cache
+[2025-12-01T09:40:47.931+0000] {subprocess.py:93} INFO -     response = super().send(request, **kwargs)
+[2025-12-01T09:40:47.932+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.932+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 136, in send
+[2025-12-01T09:40:47.933+0000] {subprocess.py:93} INFO -     return super().send(request, **kwargs)
+[2025-12-01T09:40:47.934+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.934+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+[2025-12-01T09:40:47.935+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2025-12-01T09:40:47.936+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:47.936+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+[2025-12-01T09:40:47.937+0000] {subprocess.py:93} INFO -     raise ConnectionError(e, request=request)
+[2025-12-01T09:40:47.937+0000] {subprocess.py:93} INFO - requests.exceptions.ConnectionError: HTTPSConnectionPool(host='raw.githubusercontent.com', port=443): Max retries exceeded with url: /theOehrly/f1schedule/master/schedule_2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff87fb1a0>: Failed to resolve 'raw.githubusercontent.com' ([Errno -5] No address associated with hostname)"))
+[2025-12-01T09:40:47.938+0000] {subprocess.py:93} INFO - req            INFO 	No cached data found for season_schedule. Loading data...
+[2025-12-01T09:40:47.939+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:47,874 - INFO - No cached data found for season_schedule. Loading data...
+[2025-12-01T09:40:47.940+0000] {subprocess.py:93} INFO - _api           INFO 	Fetching season schedule...
+[2025-12-01T09:40:47.940+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:47,875 - INFO - Fetching season schedule...
+[2025-12-01T09:40:51.881+0000] {subprocess.py:93} INFO - logger      WARNING 	Failed to load schedule from F1 API backend!
+[2025-12-01T09:40:51.910+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:51,881 - WARNING - Failed to load schedule from F1 API backend!
+[2025-12-01T09:40:51.926+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:51,910 - DEBUG - Traceback for failure in F1 API schedule
+[2025-12-01T09:40:51.939+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:51.948+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 196, in _new_conn
+[2025-12-01T09:40:51.955+0000] {subprocess.py:93} INFO -     sock = connection.create_connection(
+[2025-12-01T09:40:51.961+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:51.972+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+[2025-12-01T09:40:51.982+0000] {subprocess.py:93} INFO -     for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+[2025-12-01T09:40:51.989+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:51.999+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/socket.py", line 976, in getaddrinfo
+[2025-12-01T09:40:52.007+0000] {subprocess.py:93} INFO -     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+[2025-12-01T09:40:52.015+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.026+0000] {subprocess.py:93} INFO - socket.gaierror: [Errno -5] No address associated with hostname
+[2025-12-01T09:40:52.036+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:52.044+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-12-01T09:40:52.056+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:52.065+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:52.075+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+[2025-12-01T09:40:52.084+0000] {subprocess.py:93} INFO -     response = self._make_request(
+[2025-12-01T09:40:52.096+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.106+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+[2025-12-01T09:40:52.117+0000] {subprocess.py:93} INFO -     raise new_e
+[2025-12-01T09:40:52.128+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+[2025-12-01T09:40:52.139+0000] {subprocess.py:93} INFO -     self._validate_conn(conn)
+[2025-12-01T09:40:52.150+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+[2025-12-01T09:40:52.159+0000] {subprocess.py:93} INFO -     conn.connect()
+[2025-12-01T09:40:52.169+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 615, in connect
+[2025-12-01T09:40:52.182+0000] {subprocess.py:93} INFO -     self.sock = sock = self._new_conn()
+[2025-12-01T09:40:52.189+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.200+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 203, in _new_conn
+[2025-12-01T09:40:52.216+0000] {subprocess.py:93} INFO -     raise NameResolutionError(self.host, self, e) from e
+[2025-12-01T09:40:52.234+0000] {subprocess.py:93} INFO - urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x71eff80bb200>: Failed to resolve 'livetiming.formula1.com' ([Errno -5] No address associated with hostname)
+[2025-12-01T09:40:52.246+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:52.262+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-12-01T09:40:52.270+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:52.281+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:52.283+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+[2025-12-01T09:40:52.294+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2025-12-01T09:40:52.298+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2025-12-01T09:40:52.310+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+[2025-12-01T09:40:52.320+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2025-12-01T09:40:52.331+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.342+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+[2025-12-01T09:40:52.350+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+[2025-12-01T09:40:52.364+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.383+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='livetiming.formula1.com', port=443): Max retries exceeded with url: /static/2025/Index.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb200>: Failed to resolve 'livetiming.formula1.com' ([Errno -5] No address associated with hostname)"))
+[2025-12-01T09:40:52.395+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:52.411+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-12-01T09:40:52.427+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:52.443+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:52.458+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/logger.py", line 151, in __wrapped
+[2025-12-01T09:40:52.490+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-12-01T09:40:52.512+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.521+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/events.py", line 659, in _get_schedule_from_f1_timing
+[2025-12-01T09:40:52.537+0000] {subprocess.py:93} INFO -     response = fastf1._api.season_schedule(f'/static/{year}/')
+[2025-12-01T09:40:52.552+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.568+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 479, in _cached_api_request
+[2025-12-01T09:40:52.584+0000] {subprocess.py:93} INFO -     data = func(api_path, **func_kwargs)
+[2025-12-01T09:40:52.600+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.615+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/_api.py", line 1678, in season_schedule
+[2025-12-01T09:40:52.629+0000] {subprocess.py:93} INFO -     response = fetch_page(path, 'index')
+[2025-12-01T09:40:52.639+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.648+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/_api.py", line 1752, in fetch_page
+[2025-12-01T09:40:52.658+0000] {subprocess.py:93} INFO -     r = Cache.requests_get(base_url + path + pages[name], headers=headers)
+[2025-12-01T09:40:52.666+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.674+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 303, in requests_get
+[2025-12-01T09:40:52.685+0000] {subprocess.py:93} INFO -     return cls._cached_request('GET', url, **kwargs)
+[2025-12-01T09:40:52.694+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.705+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 347, in _cached_request
+[2025-12-01T09:40:52.715+0000] {subprocess.py:93} INFO -     response = func(url, **kwargs)
+[2025-12-01T09:40:52.732+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.756+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 127, in get
+[2025-12-01T09:40:52.818+0000] {subprocess.py:93} INFO -     return self.request('GET', url, params=params, **kwargs)
+[2025-12-01T09:40:52.894+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:52.939+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 183, in request
+[2025-12-01T09:40:52.991+0000] {subprocess.py:93} INFO -     return super().request(method, url, *args, headers=headers, **kwargs)  # type: ignore
+[2025-12-01T09:40:53.022+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.045+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+[2025-12-01T09:40:53.053+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2025-12-01T09:40:53.078+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.104+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 230, in send
+[2025-12-01T09:40:53.119+0000] {subprocess.py:93} INFO -     response = self._send_and_cache(request, actions, cached_response, **kwargs)
+[2025-12-01T09:40:53.140+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.159+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 254, in _send_and_cache
+[2025-12-01T09:40:53.179+0000] {subprocess.py:93} INFO -     response = super().send(request, **kwargs)
+[2025-12-01T09:40:53.191+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.207+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 136, in send
+[2025-12-01T09:40:53.236+0000] {subprocess.py:93} INFO -     return super().send(request, **kwargs)
+[2025-12-01T09:40:53.255+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.282+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+[2025-12-01T09:40:53.296+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2025-12-01T09:40:53.311+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.317+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+[2025-12-01T09:40:53.341+0000] {subprocess.py:93} INFO -     raise ConnectionError(e, request=request)
+[2025-12-01T09:40:53.359+0000] {subprocess.py:93} INFO - requests.exceptions.ConnectionError: HTTPSConnectionPool(host='livetiming.formula1.com', port=443): Max retries exceeded with url: /static/2025/Index.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb200>: Failed to resolve 'livetiming.formula1.com' ([Errno -5] No address associated with hostname)"))
+[2025-12-01T09:40:53.373+0000] {subprocess.py:93} INFO - logger      WARNING 	Failed to load schedule from Ergast API backend!
+[2025-12-01T09:40:53.389+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:52,037 - WARNING - Failed to load schedule from Ergast API backend!
+[2025-12-01T09:40:53.416+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:52,046 - DEBUG - Traceback for failure in Ergast API Schedule
+[2025-12-01T09:40:53.449+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:53.505+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 196, in _new_conn
+[2025-12-01T09:40:53.529+0000] {subprocess.py:93} INFO -     sock = connection.create_connection(
+[2025-12-01T09:40:53.535+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.547+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+[2025-12-01T09:40:53.562+0000] {subprocess.py:93} INFO -     for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+[2025-12-01T09:40:53.569+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.587+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/socket.py", line 976, in getaddrinfo
+[2025-12-01T09:40:53.598+0000] {subprocess.py:93} INFO -     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+[2025-12-01T09:40:53.610+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.618+0000] {subprocess.py:93} INFO - socket.gaierror: [Errno -2] Name or service not known
+[2025-12-01T09:40:53.628+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:53.637+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-12-01T09:40:53.643+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:53.733+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:53.789+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+[2025-12-01T09:40:53.832+0000] {subprocess.py:93} INFO -     response = self._make_request(
+[2025-12-01T09:40:53.866+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:53.886+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+[2025-12-01T09:40:53.915+0000] {subprocess.py:93} INFO -     raise new_e
+[2025-12-01T09:40:53.947+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+[2025-12-01T09:40:53.978+0000] {subprocess.py:93} INFO -     self._validate_conn(conn)
+[2025-12-01T09:40:54.006+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+[2025-12-01T09:40:54.040+0000] {subprocess.py:93} INFO -     conn.connect()
+[2025-12-01T09:40:54.054+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 615, in connect
+[2025-12-01T09:40:54.084+0000] {subprocess.py:93} INFO -     self.sock = sock = self._new_conn()
+[2025-12-01T09:40:54.113+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:54.127+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 203, in _new_conn
+[2025-12-01T09:40:54.163+0000] {subprocess.py:93} INFO -     raise NameResolutionError(self.host, self, e) from e
+[2025-12-01T09:40:54.184+0000] {subprocess.py:93} INFO - urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x71eff80bb6b0>: Failed to resolve 'api.jolpi.ca' ([Errno -2] Name or service not known)
+[2025-12-01T09:40:54.199+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:54.215+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-12-01T09:40:54.231+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:54.289+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:54.392+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+[2025-12-01T09:40:54.451+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2025-12-01T09:40:54.557+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2025-12-01T09:40:54.599+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+[2025-12-01T09:40:54.640+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2025-12-01T09:40:54.688+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:54.712+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+[2025-12-01T09:40:54.757+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+[2025-12-01T09:40:54.816+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:54.856+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.jolpi.ca', port=443): Max retries exceeded with url: /ergast/f1/2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb6b0>: Failed to resolve 'api.jolpi.ca' ([Errno -2] Name or service not known)"))
+[2025-12-01T09:40:54.914+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:54.974+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-12-01T09:40:55.012+0000] {subprocess.py:93} INFO - 
+[2025-12-01T09:40:55.064+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-01T09:40:55.115+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/logger.py", line 151, in __wrapped
+[2025-12-01T09:40:55.174+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-12-01T09:40:55.224+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:55.268+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/events.py", line 746, in _get_schedule_from_ergast
+[2025-12-01T09:40:55.299+0000] {subprocess.py:93} INFO -     season = fastf1.ergast.fetch_season(year)
+[2025-12-01T09:40:55.342+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:55.389+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/ergast/legacy.py", line 29, in fetch_season
+[2025-12-01T09:40:55.436+0000] {subprocess.py:93} INFO -     Cache.requests_get(url, headers=_headers))
+[2025-12-01T09:40:55.472+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:55.541+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 303, in requests_get
+[2025-12-01T09:40:55.599+0000] {subprocess.py:93} INFO -     return cls._cached_request('GET', url, **kwargs)
+[2025-12-01T09:40:55.663+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:55.688+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 347, in _cached_request
+[2025-12-01T09:40:55.715+0000] {subprocess.py:93} INFO -     response = func(url, **kwargs)
+[2025-12-01T09:40:55.742+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:55.767+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 127, in get
+[2025-12-01T09:40:55.820+0000] {subprocess.py:93} INFO -     return self.request('GET', url, params=params, **kwargs)
+[2025-12-01T09:40:57.419+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:57.446+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 183, in request
+[2025-12-01T09:40:57.495+0000] {subprocess.py:93} INFO -     return super().request(method, url, *args, headers=headers, **kwargs)  # type: ignore
+[2025-12-01T09:40:57.514+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:57.523+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+[2025-12-01T09:40:57.554+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2025-12-01T09:40:57.585+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:57.635+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 230, in send
+[2025-12-01T09:40:57.910+0000] {subprocess.py:93} INFO -     response = self._send_and_cache(request, actions, cached_response, **kwargs)
+[2025-12-01T09:40:57.942+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:57.969+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests_cache/session.py", line 254, in _send_and_cache
+[2025-12-01T09:40:57.998+0000] {subprocess.py:93} INFO -     response = super().send(request, **kwargs)
+[2025-12-01T09:40:58.017+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:58.038+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/fastf1/req.py", line 136, in send
+[2025-12-01T09:40:58.051+0000] {subprocess.py:93} INFO -     return super().send(request, **kwargs)
+[2025-12-01T09:40:58.092+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:58.142+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+[2025-12-01T09:40:58.179+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2025-12-01T09:40:58.252+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-12-01T09:40:58.290+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+[2025-12-01T09:40:58.317+0000] {subprocess.py:93} INFO -     raise ConnectionError(e, request=request)
+[2025-12-01T09:40:58.336+0000] {subprocess.py:93} INFO - requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.jolpi.ca', port=443): Max retries exceeded with url: /ergast/f1/2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb6b0>: Failed to resolve 'api.jolpi.ca' ([Errno -2] Name or service not known)"))
+[2025-12-01T09:40:58.358+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:52,075 - ERROR -  FATAL ERROR: Failed to load any schedule data.
+[2025-12-01T09:40:58.393+0000] {subprocess.py:93} INFO - 2025-12-01 09:40:52,088 - ERROR -  Live ingestion failed: Failed to load any schedule data.
+[2025-12-01T09:40:58.429+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-12-01T09:40:58.575+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-01T09:40:58.740+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=f1_live_watcher, task_id=check_and_ingest_new_races, run_id=scheduled__2025-11-24T09:00:00+00:00, execution_date=20251124T090000, start_date=20251201T094039, end_date=20251201T094058
+[2025-12-01T09:40:59.003+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-01T09:40:59.030+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 53 for task check_and_ingest_new_races (Bash command failed. The command returned a non-zero exit code 1.; 19502)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-01T09:40:59.167+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-12-01T09:41:00.107+0000] {standard_task_runner.py:217} INFO - Process not found (most likely exited), stop collecting metrics
+[2025-12-01T09:41:00.198+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-01T09:41:00.301+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

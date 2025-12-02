@@ -1,0 +1,63 @@
+[2025-11-30T15:39:11.781+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-30T15:39:11.800+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_polesight_pipeline.run_spark_etl_job manual__2025-11-30T15:39:08.394852+00:00 [queued]>
+[2025-11-30T15:39:11.812+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_polesight_pipeline.run_spark_etl_job manual__2025-11-30T15:39:08.394852+00:00 [queued]>
+[2025-11-30T15:39:11.813+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-11-30T15:39:11.831+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): run_spark_etl_job> on 2025-11-30 15:39:08.394852+00:00
+[2025-11-30T15:39:11.842+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'f1_polesight_pipeline', 'run_spark_etl_job', 'manual__2025-11-30T15:39:08.394852+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline_dag.py', '--cfg-path', '/tmp/tmpxoxk6klp']
+[2025-11-30T15:39:11.846+0000] {standard_task_runner.py:105} INFO - Job 35: Subtask run_spark_etl_job
+[2025-11-30T15:39:11.852+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=12610) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-30T15:39:11.853+0000] {standard_task_runner.py:72} INFO - Started process 12611 to run task
+[2025-11-30T15:39:11.917+0000] {task_command.py:467} INFO - Running <TaskInstance: f1_polesight_pipeline.run_spark_etl_job manual__2025-11-30T15:39:08.394852+00:00 [running]> on host 5f0ca9dcc785
+[2025-11-30T15:39:12.033+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='f1_admin' AIRFLOW_CTX_DAG_ID='f1_polesight_pipeline' AIRFLOW_CTX_TASK_ID='run_spark_etl_job' AIRFLOW_CTX_EXECUTION_DATE='2025-11-30T15:39:08.394852+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-30T15:39:08.394852+00:00'
+[2025-11-30T15:39:12.035+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-30T15:39:12.077+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-11-30T15:39:12.083+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/jobs/etl_process.py']
+[2025-11-30T15:39:12.103+0000] {subprocess.py:86} INFO - Output:
+[2025-11-30T15:39:14.894+0000] {subprocess.py:93} INFO - /home/***/.local/lib/python3.12/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2025-11-30T15:39:18.561+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/home/***/.local/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-11-30T15:39:18.674+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-11-30T15:39:18.675+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-11-30T15:39:18.680+0000] {subprocess.py:93} INFO - org.mongodb.spark#mongo-spark-connector_2.12 added as a dependency
+[2025-11-30T15:39:18.681+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-11-30T15:39:18.682+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-f2cc09c0-6ee6-4b1c-b2fa-39ee619fe24a;1.0
+[2025-11-30T15:39:18.683+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-11-30T15:39:18.838+0000] {subprocess.py:93} INFO - 	found org.mongodb.spark#mongo-spark-connector_2.12;10.4.0 in central
+[2025-11-30T15:39:21.770+0000] {subprocess.py:93} INFO - 	found org.mongodb#mongodb-driver-sync;5.1.4 in central
+[2025-11-30T15:39:21.771+0000] {subprocess.py:93} INFO - 	[5.1.4] org.mongodb#mongodb-driver-sync;[5.1.1,5.1.99)
+[2025-11-30T15:39:21.806+0000] {subprocess.py:93} INFO - 	found org.mongodb#bson;5.1.4 in central
+[2025-11-30T15:39:21.856+0000] {subprocess.py:93} INFO - 	found org.mongodb#mongodb-driver-core;5.1.4 in central
+[2025-11-30T15:39:21.934+0000] {subprocess.py:93} INFO - 	found org.mongodb#bson-record-codec;5.1.4 in central
+[2025-11-30T15:39:21.968+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.6.0 in central
+[2025-11-30T15:39:22.002+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.31.0 in central
+[2025-11-30T15:39:22.060+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 3347ms :: artifacts dl 32ms
+[2025-11-30T15:39:22.062+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-11-30T15:39:22.063+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.31.0 from central in [default]
+[2025-11-30T15:39:22.067+0000] {subprocess.py:93} INFO - 	org.mongodb#bson;5.1.4 from central in [default]
+[2025-11-30T15:39:22.068+0000] {subprocess.py:93} INFO - 	org.mongodb#bson-record-codec;5.1.4 from central in [default]
+[2025-11-30T15:39:22.069+0000] {subprocess.py:93} INFO - 	org.mongodb#mongodb-driver-core;5.1.4 from central in [default]
+[2025-11-30T15:39:22.073+0000] {subprocess.py:93} INFO - 	org.mongodb#mongodb-driver-sync;5.1.4 from central in [default]
+[2025-11-30T15:39:22.074+0000] {subprocess.py:93} INFO - 	org.mongodb.spark#mongo-spark-connector_2.12;10.4.0 from central in [default]
+[2025-11-30T15:39:22.076+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.6.0 from central in [default]
+[2025-11-30T15:39:22.082+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-11-30T15:39:22.083+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-11-30T15:39:22.085+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-11-30T15:39:22.086+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-11-30T15:39:22.087+0000] {subprocess.py:93} INFO - 	|      default     |   7   |   1   |   0   |   0   ||   7   |   0   |
+[2025-11-30T15:39:22.088+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-11-30T15:39:22.098+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-f2cc09c0-6ee6-4b1c-b2fa-39ee619fe24a
+[2025-11-30T15:39:22.100+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-11-30T15:39:22.133+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 7 already retrieved (0kB/40ms)
+[2025-11-30T15:39:22.552+0000] {subprocess.py:93} INFO - 25/11/30 15:39:22 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-11-30T15:39:22.859+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-11-30T15:39:22.860+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-11-30T15:39:36.023+0000] {subprocess.py:93} INFO - 25/11/30 15:39:36 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[2025-11-30T15:40:06.702+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 0) / 1][Stage 0:>                                                          (0 + 1) / 1]                                                                                Spark Session Terhubung!
+[2025-11-30T15:40:06.704+0000] {subprocess.py:93} INFO - Extracting Raw Data
+[2025-11-30T15:40:06.705+0000] {subprocess.py:93} INFO - Cleaning & Applying COALESCE logic
+[2025-11-30T15:40:06.706+0000] {subprocess.py:93} INFO - Menyimpan Data ke PostgreSQL...
+[2025-11-30T15:40:06.707+0000] {subprocess.py:93} INFO - Data sudah ditambal dengan COALESCE.
+[2025-11-30T15:40:07.238+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-11-30T15:40:07.307+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-30T15:40:07.308+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=f1_polesight_pipeline, task_id=run_spark_etl_job, run_id=manual__2025-11-30T15:39:08.394852+00:00, execution_date=20251130T153908, start_date=20251130T153911, end_date=20251130T154007
+[2025-11-30T15:40:07.391+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-30T15:40:07.413+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

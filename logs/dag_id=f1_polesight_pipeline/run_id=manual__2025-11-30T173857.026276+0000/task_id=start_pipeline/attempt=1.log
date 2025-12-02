@@ -1,0 +1,22 @@
+[2025-11-30T17:38:58.755+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-30T17:38:58.806+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_polesight_pipeline.start_pipeline manual__2025-11-30T17:38:57.026276+00:00 [queued]>
+[2025-11-30T17:38:58.838+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_polesight_pipeline.start_pipeline manual__2025-11-30T17:38:57.026276+00:00 [queued]>
+[2025-11-30T17:38:58.840+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-11-30T17:38:58.883+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): start_pipeline> on 2025-11-30 17:38:57.026276+00:00
+[2025-11-30T17:38:58.907+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'f1_polesight_pipeline', 'start_pipeline', 'manual__2025-11-30T17:38:57.026276+00:00', '--job-id', '40', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline_dag.py', '--cfg-path', '/tmp/tmpdwe3_pd9']
+[2025-11-30T17:38:58.919+0000] {standard_task_runner.py:105} INFO - Job 40: Subtask start_pipeline
+[2025-11-30T17:38:58.924+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=15146) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-30T17:38:58.926+0000] {standard_task_runner.py:72} INFO - Started process 15147 to run task
+[2025-11-30T17:38:59.062+0000] {task_command.py:467} INFO - Running <TaskInstance: f1_polesight_pipeline.start_pipeline manual__2025-11-30T17:38:57.026276+00:00 [running]> on host 5f0ca9dcc785
+[2025-11-30T17:38:59.249+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='f1_admin' AIRFLOW_CTX_DAG_ID='f1_polesight_pipeline' AIRFLOW_CTX_TASK_ID='start_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-11-30T17:38:57.026276+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-30T17:38:57.026276+00:00'
+[2025-11-30T17:38:59.251+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-30T17:38:59.310+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-11-30T17:38:59.314+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo "Memulai Pipeline F1 PoleSight."']
+[2025-11-30T17:38:59.345+0000] {subprocess.py:86} INFO - Output:
+[2025-11-30T17:38:59.363+0000] {subprocess.py:93} INFO - Memulai Pipeline F1 PoleSight.
+[2025-11-30T17:38:59.365+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-11-30T17:38:59.418+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-30T17:38:59.419+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=f1_polesight_pipeline, task_id=start_pipeline, run_id=manual__2025-11-30T17:38:57.026276+00:00, execution_date=20251130T173857, start_date=20251130T173858, end_date=20251130T173859
+[2025-11-30T17:38:59.470+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-30T17:38:59.539+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-30T17:38:59.542+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

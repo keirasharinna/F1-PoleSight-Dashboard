@@ -1,0 +1,67 @@
+[2025-11-30T17:39:05.793+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-30T17:39:05.837+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_live_watcher.check_and_ingest_new_races manual__2025-11-30T17:38:55.804195+00:00 [queued]>
+[2025-11-30T17:39:05.865+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_live_watcher.check_and_ingest_new_races manual__2025-11-30T17:38:55.804195+00:00 [queued]>
+[2025-11-30T17:39:05.871+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-11-30T17:39:05.908+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): check_and_ingest_new_races> on 2025-11-30 17:38:55.804195+00:00
+[2025-11-30T17:39:05.928+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'f1_live_watcher', 'check_and_ingest_new_races', 'manual__2025-11-30T17:38:55.804195+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/live_ingestion_dag.py', '--cfg-path', '/tmp/tmp0cb5fflp']
+[2025-11-30T17:39:05.937+0000] {standard_task_runner.py:105} INFO - Job 43: Subtask check_and_ingest_new_races
+[2025-11-30T17:39:05.942+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=15221) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-30T17:39:05.945+0000] {standard_task_runner.py:72} INFO - Started process 15222 to run task
+[2025-11-30T17:39:06.068+0000] {task_command.py:467} INFO - Running <TaskInstance: f1_live_watcher.check_and_ingest_new_races manual__2025-11-30T17:38:55.804195+00:00 [running]> on host 5f0ca9dcc785
+[2025-11-30T17:39:06.806+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='f1_admin' AIRFLOW_CTX_DAG_ID='f1_live_watcher' AIRFLOW_CTX_TASK_ID='check_and_ingest_new_races' AIRFLOW_CTX_EXECUTION_DATE='2025-11-30T17:38:55.804195+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-30T17:38:55.804195+00:00'
+[2025-11-30T17:39:06.808+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-30T17:39:06.851+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-11-30T17:39:06.854+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/jobs/ingest_live.py']
+[2025-11-30T17:39:06.888+0000] {subprocess.py:86} INFO - Output:
+[2025-11-30T17:39:14.405+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:14,404 - INFO - STARTING LIVE INGESTION CHECK FOR 2025
+[2025-11-30T17:39:14.433+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:14,432 - INFO - Connected to MongoDB: f1_datalake.telemetry_raw
+[2025-11-30T17:39:14.552+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:14,551 - INFO - Existing rounds in DB: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+[2025-11-30T17:39:14.553+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:14,552 - INFO - Fetching F1 schedule for 2025
+[2025-11-30T17:39:14.568+0000] {subprocess.py:93} INFO - req         WARNING 	DEFAULT CACHE ENABLED! (50.21 MB) /home/***/.cache/fastf1
+[2025-11-30T17:39:14.569+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:14,567 - WARNING - DEFAULT CACHE ENABLED! (50.21 MB) /home/***/.cache/fastf1
+[2025-11-30T17:39:15.149+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,148 - INFO - Found 22 completed races
+[2025-11-30T17:39:15.160+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,158 - INFO - Found 1 NEW races to download:
+[2025-11-30T17:39:15.161+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,160 - INFO -    - Round 22: Las Vegas Grand Prix
+[2025-11-30T17:39:15.163+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,161 - INFO -
+[2025-11-30T17:39:15.164+0000] {subprocess.py:93} INFO - ======================================================================
+[2025-11-30T17:39:15.166+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,162 - INFO - DOWNLOADING: Round 22 - Las Vegas Grand Prix
+[2025-11-30T17:39:15.167+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,163 - INFO - ======================================================================
+[2025-11-30T17:39:15.264+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,263 - INFO -    Loading telemetry & weather data...
+[2025-11-30T17:39:15.268+0000] {subprocess.py:93} INFO - core           INFO 	Loading data for Las Vegas Grand Prix - Qualifying [v3.6.1]
+[2025-11-30T17:39:15.272+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,264 - INFO - Loading data for Las Vegas Grand Prix - Qualifying [v3.6.1]
+[2025-11-30T17:39:15.274+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for session_info
+[2025-11-30T17:39:15.276+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,267 - INFO - Using cached data for session_info
+[2025-11-30T17:39:15.277+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for driver_info
+[2025-11-30T17:39:15.279+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:15,269 - INFO - Using cached data for driver_info
+[2025-11-30T17:39:16.295+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for session_status_data
+[2025-11-30T17:39:16.297+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:16,294 - INFO - Using cached data for session_status_data
+[2025-11-30T17:39:16.298+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for track_status_data
+[2025-11-30T17:39:16.300+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:16,297 - INFO - Using cached data for track_status_data
+[2025-11-30T17:39:16.306+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for _extended_timing_data
+[2025-11-30T17:39:16.307+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:16,305 - INFO - Using cached data for _extended_timing_data
+[2025-11-30T17:39:16.309+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for timing_app_data
+[2025-11-30T17:39:16.310+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:16,308 - INFO - Using cached data for timing_app_data
+[2025-11-30T17:39:16.311+0000] {subprocess.py:93} INFO - core           INFO 	Processing timing data...
+[2025-11-30T17:39:16.313+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:16,309 - INFO - Processing timing data...
+[2025-11-30T17:39:23.963+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for car_data
+[2025-11-30T17:39:23.992+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:23,962 - INFO - Using cached data for car_data
+[2025-11-30T17:39:27.289+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for position_data
+[2025-11-30T17:39:27.291+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:27,282 - INFO - Using cached data for position_data
+[2025-11-30T17:39:38.471+0000] {subprocess.py:93} INFO - req            INFO 	Using cached data for weather_data
+[2025-11-30T17:39:38.475+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,471 - INFO - Using cached data for weather_data
+[2025-11-30T17:39:38.838+0000] {subprocess.py:93} INFO - core           INFO 	Finished loading data for 20 drivers: ['4', '1', '55', '63', '81', '30', '14', '6', '16', '10', '27', '18', '31', '87', '43', '23', '12', '5', '22', '44']
+[2025-11-30T17:39:38.840+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,838 - INFO - Finished loading data for 20 drivers: ['4', '1', '55', '63', '81', '30', '14', '6', '16', '10', '27', '18', '31', '87', '43', '23', '12', '5', '22', '44']
+[2025-11-30T17:39:38.842+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,840 - INFO -    Raw laps: 375
+[2025-11-30T17:39:38.857+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,855 - INFO -      Dry laps: 0
+[2025-11-30T17:39:38.858+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,857 - INFO -     Valid laps: 0
+[2025-11-30T17:39:38.860+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,858 - WARNING -    No valid laps found for Las Vegas Grand Prix
+[2025-11-30T17:39:38.862+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,860 - INFO -  INGESTION SUMMARY
+[2025-11-30T17:39:38.865+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,861 - INFO -  New races processed: 1
+[2025-11-30T17:39:38.868+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,861 - INFO -  Total laps inserted: 0
+[2025-11-30T17:39:38.876+0000] {subprocess.py:93} INFO - 2025-11-30 17:39:38,865 - INFO -  Live ingestion completed successfully!
+[2025-11-30T17:39:40.010+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-11-30T17:39:40.080+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-30T17:39:40.082+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=f1_live_watcher, task_id=check_and_ingest_new_races, run_id=manual__2025-11-30T17:38:55.804195+00:00, execution_date=20251130T173855, start_date=20251130T173905, end_date=20251130T173940
+[2025-11-30T17:39:40.176+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-30T17:39:40.698+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-30T17:39:40.735+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,312 @@
+2025-12-01 09:40:43,724 - INFO - STARTING LIVE INGESTION CHECK FOR 2025
+2025-12-01 09:40:43,742 - INFO - Connected to MongoDB: f1_datalake.telemetry_raw
+2025-12-01 09:40:43,817 - INFO - Existing rounds in DB: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-12-01 09:40:43,817 - INFO - Fetching F1 schedule for 2025
+2025-12-01 09:40:43,826 - WARNING - DEFAULT CACHE ENABLED! (50.22 MB) /home/airflow/.cache/fastf1
+2025-12-01 09:40:47,855 - WARNING - Failed to load schedule from FastF1 backend!
+2025-12-01 09:40:47,856 - DEBUG - Traceback for failure in FastF1 schedule
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -5] No address associated with hostname
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x71eff87fb1a0>: Failed to resolve 'raw.githubusercontent.com' ([Errno -5] No address associated with hostname)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='raw.githubusercontent.com', port=443): Max retries exceeded with url: /theOehrly/f1schedule/master/schedule_2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff87fb1a0>: Failed to resolve 'raw.githubusercontent.com' ([Errno -5] No address associated with hostname)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/logger.py", line 151, in __wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/events.py", line 599, in _get_schedule_ff1
+    response = Cache.requests_get(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 303, in requests_get
+    return cls._cached_request('GET', url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 347, in _cached_request
+    response = func(url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 127, in get
+    return self.request('GET', url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 183, in request
+    return super().request(method, url, *args, headers=headers, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 230, in send
+    response = self._send_and_cache(request, actions, cached_response, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 254, in _send_and_cache
+    response = super().send(request, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 136, in send
+    return super().send(request, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='raw.githubusercontent.com', port=443): Max retries exceeded with url: /theOehrly/f1schedule/master/schedule_2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff87fb1a0>: Failed to resolve 'raw.githubusercontent.com' ([Errno -5] No address associated with hostname)"))
+2025-12-01 09:40:47,874 - INFO - No cached data found for season_schedule. Loading data...
+2025-12-01 09:40:47,875 - INFO - Fetching season schedule...
+2025-12-01 09:40:51,881 - WARNING - Failed to load schedule from F1 API backend!
+2025-12-01 09:40:51,910 - DEBUG - Traceback for failure in F1 API schedule
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -5] No address associated with hostname
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x71eff80bb200>: Failed to resolve 'livetiming.formula1.com' ([Errno -5] No address associated with hostname)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='livetiming.formula1.com', port=443): Max retries exceeded with url: /static/2025/Index.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb200>: Failed to resolve 'livetiming.formula1.com' ([Errno -5] No address associated with hostname)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/logger.py", line 151, in __wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/events.py", line 659, in _get_schedule_from_f1_timing
+    response = fastf1._api.season_schedule(f'/static/{year}/')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 479, in _cached_api_request
+    data = func(api_path, **func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/_api.py", line 1678, in season_schedule
+    response = fetch_page(path, 'index')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/_api.py", line 1752, in fetch_page
+    r = Cache.requests_get(base_url + path + pages[name], headers=headers)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 303, in requests_get
+    return cls._cached_request('GET', url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 347, in _cached_request
+    response = func(url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 127, in get
+    return self.request('GET', url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 183, in request
+    return super().request(method, url, *args, headers=headers, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 230, in send
+    response = self._send_and_cache(request, actions, cached_response, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 254, in _send_and_cache
+    response = super().send(request, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 136, in send
+    return super().send(request, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='livetiming.formula1.com', port=443): Max retries exceeded with url: /static/2025/Index.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb200>: Failed to resolve 'livetiming.formula1.com' ([Errno -5] No address associated with hostname)"))
+2025-12-01 09:40:52,037 - WARNING - Failed to load schedule from Ergast API backend!
+2025-12-01 09:40:52,046 - DEBUG - Traceback for failure in Ergast API Schedule
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x71eff80bb6b0>: Failed to resolve 'api.jolpi.ca' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.jolpi.ca', port=443): Max retries exceeded with url: /ergast/f1/2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb6b0>: Failed to resolve 'api.jolpi.ca' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/logger.py", line 151, in __wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/events.py", line 746, in _get_schedule_from_ergast
+    season = fastf1.ergast.fetch_season(year)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/ergast/legacy.py", line 29, in fetch_season
+    Cache.requests_get(url, headers=_headers))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 303, in requests_get
+    return cls._cached_request('GET', url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 347, in _cached_request
+    response = func(url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 127, in get
+    return self.request('GET', url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 183, in request
+    return super().request(method, url, *args, headers=headers, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 230, in send
+    response = self._send_and_cache(request, actions, cached_response, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests_cache/session.py", line 254, in _send_and_cache
+    response = super().send(request, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fastf1/req.py", line 136, in send
+    return super().send(request, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.jolpi.ca', port=443): Max retries exceeded with url: /ergast/f1/2025.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71eff80bb6b0>: Failed to resolve 'api.jolpi.ca' ([Errno -2] Name or service not known)"))
+2025-12-01 09:40:52,075 - ERROR -  FATAL ERROR: Failed to load any schedule data.
+2025-12-01 09:40:52,088 - ERROR -  Live ingestion failed: Failed to load any schedule data.
+2025-12-01 09:56:03,022 - INFO - STARTING LIVE INGESTION CHECK FOR 2025
+2025-12-01 09:56:03,048 - INFO - Connected to MongoDB: f1_datalake.telemetry_raw
+2025-12-01 09:56:03,220 - INFO - Existing rounds in DB: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-12-01 09:56:03,221 - INFO - Fetching F1 schedule for 2025
+2025-12-01 09:56:03,226 - WARNING - DEFAULT CACHE ENABLED! (50.22 MB) /home/airflow/.cache/fastf1
+2025-12-01 09:56:03,488 - INFO - Found 22 completed races
+2025-12-01 09:56:03,492 - INFO - Found 1 NEW races to download:
+2025-12-01 09:56:03,493 - INFO -    - Round 22: Las Vegas Grand Prix
+2025-12-01 09:56:03,494 - INFO - 
+======================================================================
+2025-12-01 09:56:03,494 - INFO - DOWNLOADING: Round 22 - Las Vegas Grand Prix
+2025-12-01 09:56:03,495 - INFO - ======================================================================
+2025-12-01 09:56:03,532 - INFO -    Loading telemetry & weather data...
+2025-12-01 09:56:03,532 - INFO - Loading data for Las Vegas Grand Prix - Qualifying [v3.6.1]
+2025-12-01 09:56:03,534 - INFO - Using cached data for session_info
+2025-12-01 09:56:03,536 - INFO - Using cached data for driver_info
+2025-12-01 09:56:04,296 - INFO - Using cached data for session_status_data
+2025-12-01 09:56:04,298 - INFO - Using cached data for track_status_data
+2025-12-01 09:56:04,302 - INFO - Using cached data for _extended_timing_data
+2025-12-01 09:56:04,304 - INFO - Using cached data for timing_app_data
+2025-12-01 09:56:04,304 - INFO - Processing timing data...
+2025-12-01 09:56:05,697 - INFO - Using cached data for car_data
+2025-12-01 09:56:06,013 - INFO - Using cached data for position_data
+2025-12-01 09:56:07,792 - INFO - Using cached data for weather_data
+2025-12-01 09:56:07,862 - INFO - Finished loading data for 20 drivers: ['4', '1', '55', '63', '81', '30', '14', '6', '16', '10', '27', '18', '31', '87', '43', '23', '12', '5', '22', '44']
+2025-12-01 09:56:07,863 - INFO -    Raw laps: 375
+2025-12-01 09:56:07,867 - INFO -      Dry laps: 0
+2025-12-01 09:56:07,868 - INFO -     Valid laps: 0
+2025-12-01 09:56:07,868 - WARNING -    No valid laps found for Las Vegas Grand Prix
+2025-12-01 09:56:07,869 - INFO -  INGESTION SUMMARY
+2025-12-01 09:56:07,869 - INFO -  New races processed: 1
+2025-12-01 09:56:07,870 - INFO -  Total laps inserted: 0
+2025-12-01 09:56:07,872 - INFO -  Live ingestion completed successfully!

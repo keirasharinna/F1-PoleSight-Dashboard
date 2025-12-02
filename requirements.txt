@@ -1,0 +1,4 @@
+fastf1
+pymongo
+pandas
+pyspark==3.5.0
