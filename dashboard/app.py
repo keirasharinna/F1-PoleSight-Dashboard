@@ -117,15 +117,31 @@ st.markdown("""
 # ==========================================
 @st.cache_data(ttl=600)
 def load_data(query):
-    db_config = {"host": "localhost", "port": "5433", "database": "f1_datawarehouse",
-                 "user": "warehouse_user", "password": "warehouse_password"}
+    # RENCANA A: Coba konek Database Lokal (Docker - Laptop)
     try:
+        db_config = {"host": "localhost", "port": "5433", "database": "f1_datawarehouse",
+                     "user": "warehouse_user", "password": "warehouse_password"}
         conn = psycopg2.connect(**db_config)
         df = pd.read_sql(query, conn)
         conn.close()
         df.columns = [col.lower() for col in df.columns]
         return df
-    except: return pd.DataFrame()
+    except:
+        # RENCANA B: Fallback ke File CSV (Streamlit Cloud)
+        # Jika gagal konek database, kita baca file statis yang sudah di-upload
+        try:
+            # Coba path lengkap (asumsi struktur folder: dashboard/f1_data_static.csv)
+            df = pd.read_csv("dashboard/f1_data_static.csv")
+            df.columns = [col.lower() for col in df.columns]
+            return df
+        except:
+            try:
+                # Coba path langsung (jika file sejajar dengan app.py)
+                df = pd.read_csv("f1_data_static.csv")
+                df.columns = [col.lower() for col in df.columns]
+                return df
+            except:
+                return pd.DataFrame()
 
 try:
     df_raw = load_data("SELECT * FROM lap_telemetry_advanced")
