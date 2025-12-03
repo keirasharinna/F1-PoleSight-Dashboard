@@ -1,4 +1,6 @@
-fastf1
-pymongo
+streamlit
 pandas
-pyspark==3.5.0
+plotly
+numpy
+scikit-learn
+psycopg2-binary
